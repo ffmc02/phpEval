@@ -10,7 +10,7 @@ include_once '../config.php';
 include_once '../controllers/add_formCtrl.php';
 include_once 'include/header.php';
 include_once 'include/navbar.php';
-if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $toto)) {
+if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $authAdmin)) {
     ?>
     <main>
         <a href=""></a>
