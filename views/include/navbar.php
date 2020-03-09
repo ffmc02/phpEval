@@ -56,7 +56,6 @@
                             <a class="dropdown-item" href="../../index.php">Accueil</a> 
                             <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $toto)) { ?>
                                 <a class="dropdown-item" href="../home.php">Accueil site</a>  
-                                <a class="dropdown-item" href="../add_form.php">Ajouter un vinyle</a>
                                 <a class="dropdown-item" href="../contactForm.php">Formulaire de contact</a>
                                 <a class="dropdown-item" href="../disconection.php"><p>Vous déconecter</p></a>
                                 <?php
@@ -64,6 +63,7 @@
                             if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $authAdmin)) {
                                 ?>
                                 <a class="dropdown-item" href="indexadmin.php">Accuiel Administrateur</a>
+                                <a class="dropdown-item" href="../add_form.php">Ajouter un vinyle</a>
                                 <a class="dropdown-item" href="../codeDetails.php">Détails du code</a>
                                 <a class="dropdown-item" href="view/listsArtist.php">Liste des artistes</a>
                                 <?php
@@ -95,7 +95,6 @@
                             <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $toto)) {
                                 ?>
                                 <a class="dropdown-item" href="../../home.php">Accueil site</a>  
-                                <a class="dropdown-item" href="../../add_form.php">Ajouter un vinyle</a>
                                 <a class="dropdown-item" href="../../contactForm.php">Formulaire de contact</a>
                                 <a class="dropdown-item" href="../../disconection.php">Vous déconecter</a>
                                 <?php
@@ -103,6 +102,7 @@
                             if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $authAdmin)) {
                                 ?>
                                 <a class="dropdown-item" href="../indexadmin.php">Accuiel Administrateur</a>
+                                <a class="dropdown-item" href="../../add_form.php">Ajouter un vinyle</a>
                                 <a class="dropdown-item" href="../../codeDetails.php">Détails du code</a>
                                 <a class="dropdown-item" href="listsArtist.php">Liste des artistes</a>
                                 <?php
