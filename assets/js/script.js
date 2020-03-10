@@ -3,7 +3,6 @@ $('#registration').show();
 $('#connexion').hide();
 $('.btnRegistration').hide();
 $('.btnExistCompt').show();
-
 //$('.btnExistCompt').hide();
 //$('#registration').hide();
 $('.btnRegistration').click(function () {

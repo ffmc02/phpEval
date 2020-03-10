@@ -63,16 +63,18 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <span class="text-danger" id="Picture"><?= isset($formError['pictrue']) ? $formError['pictrue'] : '' ?></span> 
                         </div>
                         <div class="form-group col-lg-8 col-md-12 text-left">
-                            <input class="btn btn-primary" type="submit" id="submit" value="Ajouter" name="submit" /> <a href="../index.php" title="retour"> <button type="button" class="btn btn-primary" >Retour</button></a>
+                            <input class="btn btn-primary" type="submit" id="submit" value="Ajouter" name="submit" /> <a href="home.php" title="retour"> <button type="button" class="btn btn-primary" >Retour</button></a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </main>
+  <script src="../assets/js/script.js"></script>
     <?php
 } else {
     require 'include/restrictedZone.php';
 }
+
 include 'include/footer.php';
 ?>
