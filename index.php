@@ -58,9 +58,9 @@ include_once 'controllers/indexCtrl.php';
                         <div id="columnCenter" class=" col-lg-8 px-0">
                             <div class="col-lg-12 text-center">
                                 <h1>Evaluation PHP.</h1>
+                                <p class=" text-primary">Bienvenue sur l'évaluation PHP  pour accéder Il faut soit vous connecter soit vous enregistrez </p>
                             </div>
                             <div class="col-lg-12 text-center">
-                                <p>Pour accéder au reste de l'évaluation merci de vous enregistrer via le formulaire ci-dessous.</p>
                                 <p> Si vous disposez déjà d'un profil vous pouvez aller directement sur <a class="btnExistCompt" href="#connexion">j'ai un compte.</a></p>
                             </div>
                             <div class="registration text-center" id="registration">
