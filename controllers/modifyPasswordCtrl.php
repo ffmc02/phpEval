@@ -34,8 +34,8 @@ if (isset($_POST['modifyPassword'])) {
             if ($modifyPasswordUsers->modifyPassword()) {
                 $messaageSucess = 'votre mot de passe a été modifié avec succès';
             } else {
-                $formError['echec'] = 'Votre mot de passe n\'est pas changé, veuillez réessayer ou contacter le web master par mail via <a href="contactus">la page contact </a> ou par mail'
-                        . 'ffmc02@outlook.fr';
+                $formError['echec'] = 'Votre mot de passe n\'est pas changé, veuillez réessayer ou contacter le web master par mail via <a href="contactForm.php">la page contact </a> ou par mail'
+                        . 'gaetan.jonard.dev@outlook.fr';
             }
         }
     } else {

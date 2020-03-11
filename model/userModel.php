@@ -109,4 +109,24 @@ class userModel {
         return $queryResult->execute();
     }
 
+    public function verifEmailAndCle() {
+        $query = 'SELECT COUNT (`id`) AS id'
+                . 'FROM `2526u_user`'
+                . 'WHERE `email`=:email AND `cle`= :cle';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $queryResult->bindValue(':cle', $this->cle, PDO::PARAM_STR);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function modifyPassword() {
+        $query = ' UPDATE `2526u_user` SET `password`= :password, cle=:cle WHERE `2526u_user`.`email`=:email ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindvalue(':email', $this->email, PDO::PARAM_STR);
+        $queryResult->bindvalue(':password', $this->password, PDO::PARAM_STR);
+        $queryResult->bindvalue(':cle', $this->cle, PDO::PARAM_STR);
+        return $queryResult->execute();
+    }
+
 }
