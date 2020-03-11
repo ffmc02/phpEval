@@ -136,7 +136,7 @@ include_once 'controllers/indexCtrl.php';
                                         <input type="submit" name="connexion" value="Se connecter!"  />
                                     </div>
                                 </form>
-                                <!--<p><a href="passwordForget">Mot de passe oublié</a></p>-->
+                                <p><a href="views/passwordForget.php">Mot de passe oublié</a></p>
                                 <p class="text-danger" > <?= isset($connexionError) ? $connexionError : '' ?></p>
                                 <p class="text-danger"><?= isset($formError['userExist']) ? $formError['userExist'] : '' ?></p>
                             </div>

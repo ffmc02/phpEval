@@ -2,7 +2,12 @@
 
 $title = 'Mot de passe oublié';
 $verifyUserExist = new userModel();
-$formError=array();
+$formError = array();
+
+$checkMail = new userModel();
+$checEmailExist = $checkMail->mailExist();
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
 
 if (isset($_POST['passwordForget'])) {
     if (!empty($_POST['surname'])) {
@@ -12,7 +17,7 @@ if (isset($_POST['passwordForget'])) {
             $formError['surname'] = 'Votre pseudo ne doit pas dépasser 50 caractères.';
         }
     } else {
-        $formError['surname'] = 'Merci de remplir le champ Pseudo';
+        $formError['surname'] = 'Merci de remplir le champ nom de famille';
     }
     //verification de l'adresse mail!
     if (!empty($_POST['email'])) {
@@ -27,12 +32,10 @@ if (isset($_POST['passwordForget'])) {
     }
     if (count($formError) == 0) {
         //je teste si le mail existe dans la base de donnée  et le pseudo 
-         $verif =$verifyUserExist->testEmail();
-        if ( $verif->count = 1) {
-           
-            
-//        if ($checEmailExist->email) {            echo 'julien';
-            $subject = 'Nouveau mot de passe pour le site FFMC02.fr';
+        $verif = $verifyUserExist->testEmail();
+        var_dump($verif->countId);
+        if ($verif->countId == 1) {
+            $subject = 'Nouveau mot de passe pour l\'évaluation PHP';
             $messageMail = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
                 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
                 <head><meta charset="utf8" />
@@ -41,17 +44,14 @@ if (isset($_POST['passwordForget'])) {
      <body>
        <center><p><strong>Bonjour ' . $verif->surname . '</strong></p><center>
            <p> Pour récupérer votre mot de passe il vous suffit de cliquer sur le lien suivant : </p>
-     <a href="http://localhost/phpEvaluation/views/modifyPassword.php?cle='.$verif->cle.'">cliquez ICI</a>
-     
+     <a href="http://localhost/phpEvaluation/views/modifyPassword.php?cle=' . $verif->cle . '">cliquez ICI</a>
 </body>
      </html>';
-            
-            
             $headers[] = 'MIME-Version: 1.0';
             $headers[] = 'Content-type: text/html; charset=iso-859-1';
             $headers[] = 'Reply-To:ffmc02@outook.fr';
             $headers[] = 'From: FFMC02 <ffmc02@outook.fr>';
-         
+
             if (mail($mailUser, $subject, $messageMail, implode("\r\n", $headers))) {
                 $messagesucces = 'Un mail vient de vous être envoyé, vous avez juste à cliquer sur le lien , pour pouvoir accéder au formulaire pour enregistrer un nouveau mot de passe';
             } else {
@@ -62,4 +62,3 @@ if (isset($_POST['passwordForget'])) {
         }
     }
 }
-

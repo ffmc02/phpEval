@@ -7,7 +7,6 @@ include_once '../config.php';
 include_once '../controllers/passwordForgetCtrl.php';
 include_once 'include/header.php';
 include_once 'include/navbar.php';
-if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $toto)) {
     ?>
     <main><div class="container-fluid">
             <div class="row">
@@ -27,13 +26,13 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <form method="post" name="formpasswordForget">
                             <div>
                                 <label>Mon email: </label>
-                                <input type="email" name="email" />
+                                <input type="email" name="email" placeholder="Votre Email"/>
                                 <span class="text-danger"><?= isset($formError['email']) ? $formError['email'] : '' ?></span>
                                 
                             </div>
                             <div>
                                 <label>Votre Nom de famille: </label>
-                                <input type="text" name="surname" />
+                                <input type="text" name="surname"  placeholder="Votre nom de famille"/>
                                 <span class="text-danger"><?= isset($formError['surname']) ? $formError['surname'] : '' ?></span>
                             </div>
                             <div>
@@ -46,9 +45,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
     </main>
     <?php
-} else {
-    require 'include/restrictedZone.php';
-}
+
 
 include 'include/footer.php';
 ?>

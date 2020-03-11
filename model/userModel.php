@@ -129,4 +129,21 @@ class userModel {
         return $queryResult->execute();
     }
 
+ 
+//verification de l'existance du mail
+    public function mailExist() {
+        $query = 'SELECT `emil` AS `email`, '
+                . 'COUNT(id) AS `countId`, '
+                . '`cle` '
+                . 'FROM `1402f_user` '
+                . 'WHERE '
+                . '`email`=:email ';
+//on lie chaque marqueur a une valeur
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':email', $this->email, PDO::PARAM_STR);
+        //execution de la requette préparer:
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
 }

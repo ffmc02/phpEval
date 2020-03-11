@@ -7,7 +7,6 @@ include_once '../config.php';
 include_once '../controllers/modifyPasswordCtrl.php';
 include_once 'include/header.php';
 include_once 'include/navbar.php';
-if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $toto)) {
     ?>
     <main><div class="container-fluid">
             <div class="row">
@@ -48,9 +47,6 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
     </main>
     <?php
-} else {
-    require 'include/restrictedZone.php';
-}
 
 include 'include/footer.php';
 ?>
