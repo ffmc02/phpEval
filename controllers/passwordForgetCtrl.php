@@ -33,8 +33,24 @@ if (isset($_POST['passwordForget'])) {
     if (count($formError) == 0) {
         //je teste si le mail existe dans la base de donnée  et le pseudo 
         $verif = $verifyUserExist->testEmail();
-        var_dump($verif->countId);
         if ($verif->countId == 1) {
+
+            //création d'une chaine de caractére avec timestamp pour maill de validation 
+            function generateRandomString($length = 40) {
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $randomString = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                }
+                return $randomString;
+            }
+
+            $test1 = generateRandomString();
+            $test = generateRandomString(50);
+            $time = time();
+            $cle = $test1 . $time . $test;
+
             $subject = 'Nouveau mot de passe pour l\'évaluation PHP';
             $messageMail = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
                 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -44,7 +60,7 @@ if (isset($_POST['passwordForget'])) {
      <body>
        <center><p><strong>Bonjour ' . $verif->surname . '</strong></p><center>
            <p> Pour récupérer votre mot de passe il vous suffit de cliquer sur le lien suivant : </p>
-     <a href="http://localhost/phpEvaluation/views/modifyPassword.php?cle=' . $verif->cle . '">cliquez ICI</a>
+     <a href="http://localhost/phpEvaluation/views/modifyPassword.php?cle=' . $cle . '">cliquez ICI</a>
 </body>
      </html>';
             $headers[] = 'MIME-Version: 1.0';
@@ -53,6 +69,10 @@ if (isset($_POST['passwordForget'])) {
             $headers[] = 'From: FFMC02 <ffmc02@outook.fr>';
 
             if (mail($mailUser, $subject, $messageMail, implode("\r\n", $headers))) {
+                $modifyCle = new userModel();
+                $modifyCle->cle = $cle;
+                $modifyCle->email = $mailUser;
+                $cleModify = $modifyCle->modifyCle();
                 $messagesucces = 'Un mail vient de vous être envoyé, vous avez juste à cliquer sur le lien , pour pouvoir accéder au formulaire pour enregistrer un nouveau mot de passe';
             } else {
                 $messageError = 'Une erreur technique est survenue, veuillez contacter l\'administrateur du site via la page de <a href="../view/contactus.php">contact</a>';
@@ -62,3 +82,5 @@ if (isset($_POST['passwordForget'])) {
         }
     }
 }
+
+

@@ -8,6 +8,20 @@ $formError = array();
 $error = array();
 $regexMail = '/^[a-z0-9.-]+@[a-z0-9.-]{2,}.[a-z]{2,4}$/';
 $regexTitle = '/^[A-Za-z \d\-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
+ function generateRandomString($length = 15) {
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#@à';
+                $charactersLength = strlen($characters);
+                $randomString = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                }
+                return $randomString;
+            }
+
+            $test1 = generateRandomString();
+            $test = generateRandomString(40);
+            $time = time();
+            $cle = $test1 . $time . $test1;
 if (isset($_POST['registration'])) {
     //verification du pseudo
     if (!empty($_POST['surname'])) {
@@ -47,7 +61,7 @@ if (isset($_POST['registration'])) {
     } else {
         $formError['password'] = 'Merci de remplir les champs password';
     }
-    $user->cle = md5(microtime(TRUE) * 100000);
+    $user->cle = $cle;
 //    var_dump($user);
     if (count($formError) == 0) {
         $testEmail = new userModel();

@@ -129,7 +129,6 @@ class userModel {
         return $queryResult->execute();
     }
 
- 
 //verification de l'existance du mail
     public function mailExist() {
         $query = 'SELECT `emil` AS `email`, '
@@ -144,6 +143,14 @@ class userModel {
         //execution de la requette préparer:
         $queryResult->execute();
         return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function modifyCle() {
+        $query = 'UPDATE `2526u_user` SET cle=:cle WHERE `2526u_user`.`email`=:email ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindvalue(':email', $this->email, PDO::PARAM_STR);
+        $queryResult->bindvalue(':cle', $this->cle, PDO::PARAM_STR);
+        return $queryResult->execute();
     }
 
 }
