@@ -37,6 +37,7 @@ if (isset($_POST['passwordForget'])) {
 
             //création d'une chaine de caractére avec timestamp pour maill de validation 
             function generateRandomString($length = 40) {
+//                définition des carractere qui vont composer la chaine
                 $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $charactersLength = strlen($characters);
                 $randomString = '';
@@ -45,10 +46,12 @@ if (isset($_POST['passwordForget'])) {
                 }
                 return $randomString;
             }
-
+//definition de deux vartiable $test et $test1 avec un nombre de caratere précis
             $test1 = generateRandomString();
             $test = generateRandomString(50);
+//            définition du timtemps
             $time = time();
+//            concaténation des variables $test $time ^$test1
             $cle = $test1 . $time . $test;
 
             $subject = 'Nouveau mot de passe pour l\'évaluation PHP';
