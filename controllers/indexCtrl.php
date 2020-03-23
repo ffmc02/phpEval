@@ -118,22 +118,11 @@ if (isset($_POST['connexion'])) {
             $password = $verif->password;
             $validPassword = password_verify($loginPassword, $password);
             if ($validPassword) {
-                     function generateRandomString($length = 40) {
-//                définition des carractere qui vont composer la chaine
-                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                $charactersLength = strlen($characters);
-                $randomString = '';
-                for ($i = 0; $i < $length; $i++) {
-                    $randomString .= $characters[rand(0, $charactersLength - 1)];
-                }
-                return $randomString;
-            }
-            $chaine=generateRandomString();
                 $_SESSION['idUser'] = $verif->idUser;
                 $_SESSION['loginMail'] = $verif->loginMail;
                 $_SESSION['surname'] = $verif->surname;
                 $_SESSION['firstname'] = $verif->firstname;
-                $_SESSION['connect'] = $chaine;
+                $_SESSION['connect'] = 'OK';
                 $_SESSION['access'] = $verif->access;
                 if (in_array($_SESSION['access'], $authAdmin)) {
                     header("Location: views/isy/indexadmin.php");

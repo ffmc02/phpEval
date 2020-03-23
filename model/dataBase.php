@@ -13,8 +13,10 @@ class dataBase {
     public $db = NULL;
     public function __construct() {
         try {
-            //ordi formation
+            //Local
             $this->db = new PDO('mysql:host=localhost;dbname=phpevaluation;charset=utf8', 'root', '');
+            // devamorce
+//            $this->db = new PDO('mysql:host=localhost;dbname=gaetan02;charset=utf8', 'gaetan02', '05071988G@e');
         }
         // Sinon on affiche un message d'erreur
         catch (Exception $e) {
